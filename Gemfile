@@ -9,6 +9,7 @@ gem 'puma', '~> 3.11'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'fast_jsonapi', '~> 1.5'
 gem 'ransack', '~> 2.1.1'
+gem 'rack-cors', '~> 1.0.3' 
 
 group :test do
   gem 'factory_bot_rails'

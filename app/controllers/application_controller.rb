@@ -1,4 +1,4 @@
-# frozen_string_literal: true    
+# frozen_string_literal: true
 
 class ApplicationController < ActionController::API
   def render_success(result, options: {})
@@ -23,4 +23,3 @@ class ApplicationController < ActionController::API
     "#{result.class.name}Serializer".constantize
   end
 end
-

@@ -1,11 +1,11 @@
-# frozen_string_literal: true   
+# frozen_string_literal: true
 
 class Doctor < ApplicationRecord
   has_many :doctor_specialities
   has_many :specialities, through: :doctor_specialities
 
   accepts_nested_attributes_for :doctor_specialities
-  validates :name, :crm, :phone, presence: :true
+  validates :name, :crm, :phone, presence: true
   validate :specialities_size
   validate :specialities_uniqueness
 

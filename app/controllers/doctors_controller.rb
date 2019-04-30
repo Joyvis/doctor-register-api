@@ -1,4 +1,4 @@
-# frozen_string_literal: true    
+# frozen_string_literal: true
 
 class DoctorsController < ApplicationController
   def index
@@ -29,13 +29,18 @@ class DoctorsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    doctor = Doctor.find(params[:id])
+    doctor.destroy
+
+    render_success doctor
   end
 
   private
 
   def doctor_params
-    params.require(:doctor).
-      permit(:name, :crm, :phone, doctor_specialities_attributes: [:speciality_id])
+    params.require(:doctor)
+          .permit(:name, :crm, :phone,
+                  doctor_specialities_attributes: [:speciality_id])
   end
 end

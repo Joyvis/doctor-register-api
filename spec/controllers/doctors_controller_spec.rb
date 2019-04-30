@@ -1,4 +1,4 @@
-# frozen_string_literal: true    
+# frozen_string_literal: true
 
 require 'rails_helper'
 
@@ -13,8 +13,8 @@ RSpec.describe DoctorsController, type: :controller do
     let(:specialities) { create_list(:speciality, 2) }
 
     let(:doctor_params) do
-      { doctor: { name: 'Joyvis', crm: '1234', phone: '1333221122' }.
-        merge(speciality_params) }
+      { doctor: { name: 'Joyvis', crm: '1234', phone: '1333221122' }
+        .merge(speciality_params) }
     end
 
     context 'with a existing speciality' do
@@ -40,7 +40,6 @@ RSpec.describe DoctorsController, type: :controller do
     end
   end
 
-
   describe 'updating a doctor' do
     before do
       patch :update, params: doctor_params.merge(id: doctor.id)
@@ -51,8 +50,8 @@ RSpec.describe DoctorsController, type: :controller do
     let(:speciality) { create(:speciality) }
 
     let(:doctor_params) do
-      { doctor: { name: 'Joyvis', crm: '1234', phone: '1333221122' }.
-        merge(speciality_params) }
+      { doctor: { name: 'Joyvis', crm: '1234', phone: '1333221122' }
+        .merge(speciality_params) }
     end
 
     context 'with a existing speciality' do
@@ -130,6 +129,16 @@ RSpec.describe DoctorsController, type: :controller do
         expect(response).to have_http_status(:ok)
         expect(data).to be_blank
       end
+    end
+  end
+
+  describe 'deleting a doctor' do
+    let(:doctors) { create_list(:doctor, 2) }
+
+    before { delete :destroy, params: { id: doctors.first.id } }
+
+    it 'doctor deleted' do
+      expect(Doctor.all.size).to eq(1)
     end
   end
 end
