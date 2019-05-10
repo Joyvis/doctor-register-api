@@ -6,6 +6,7 @@ class Doctor < ApplicationRecord
 
   accepts_nested_attributes_for :doctor_specialities
   validates :name, :crm, :phone, presence: true
+  validates_uniqueness_of :crm
   validate :specialities_size
   validate :specialities_uniqueness
 
