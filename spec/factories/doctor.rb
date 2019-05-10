@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :doctor do
     name { 'Carlos José' }
-    crm { '8447753' }
+    crm { Faker::Number.unique.number(5) }
     phone { '1199512323' }
     doctor_specialities_attributes do
       [

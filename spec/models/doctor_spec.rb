@@ -4,9 +4,12 @@ require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
   describe 'validating relationships' do
+    before { create(:doctor) }
+
     it { is_expected.to have_many(:specialities).through(:doctor_specialities) }
     it { is_expected.to have_many(:doctor_specialities) }
     it { is_expected.to accept_nested_attributes_for(:doctor_specialities) }
+    it { is_expected.to validate_uniqueness_of(:crm) }
   end
 
   describe 'validating' do
